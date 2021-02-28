@@ -1,0 +1,27 @@
+CTYPE html>
+
+{% extends "parent.html" %}
+
+<html>
+    <head>
+        {% block head %}
+            <title>Update Task</title>
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block body %}
+            <h1 style="text-align:center;"><u>Update task</u></h1>
+            <form action="{{ url_for('tasks') }}" method="POST" name="updatedtask">
+                <label for="update_description">Task:</label>
+                <textarea id="update_description" name="update_description"></textarea><br>
+
+                <label for="update_due_date">Due date:</label>
+                <input type="date" id="update_due_date" name="update_due_date" rows="2" columns="10"><br>
+
+                <input type="submit" value="Submit"><br>
+            </form>
+        {% endblock %}
+    </body>
+</html>
+

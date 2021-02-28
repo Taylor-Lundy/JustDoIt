@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+{% extends "parent.html" %}
+
+<html>
+    <head>
+        {% block head %}
+            <title>ToDo List</title>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tables.css') }}">
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block body %}
+            <h1 style="text-align:center;"><u>{{ name }}'s ToDo List</u></h1>
+
+            </div>
+                <!-- uncompleted tasks -->
+                <table border="2px" style="margin-left:auto; margin-right:auto;">
+                    <thead>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Options</td>
+                    </thead>
+                    {% if ToDoList != None %}
+                        {% for task in ToDoList %}
+                            <tr>
+                                <td>{{ task["description"] }}</td>
+                                <td>{{ task["due_date"] }}</td>
+                                <td>
+                                    <a style="background-color:transparent;color:blue;" href="/update/{{task.item_id}}">Update</a>
+                                    <br>
+                                    <a style="background-color:transparent;color:blue;" href="/complete/{{task.item_id}}">Complete</a>
+                                    <br>
+                                    <a style="background-color: transparent;color:blue;" href="/delete/{{task.item_id}}">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+                <br>
+
+                <!-- link to add a task to list -->
+                <div style="text-align: center;">
+                    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/links.css') }}">
+                    <a href="{{ url_for('add_task') }}">Add Task</a><br>
+                </div>
+            </div>
+
+            <!-- completed tasks -->
+            <h1 style="text-align:center;"><u>{{ name }}'s Completed Tasks</u></h1>
+            <div>
+                <table border="2px" style="margin-left:auto; margin-right:auto;">
+                    <thead>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Delete</td>
+                    </thead>
+                    {% if CompletedList != None %}
+                        {% for task in CompletedList %}
+                            <tr>
+                                <td>{{ task["description"] }}</td>
+                                <td>{{ task["due_date"] }}</td>
+                                <td>
+                                    <a style="background-color: transparent;color:blue;" href="/delete/{{task.item_id}}">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+        {% endblock %}
+    </body>
+</html>

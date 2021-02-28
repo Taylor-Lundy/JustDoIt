@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% extends "parent.html" %}
+
+<html>
+    <head>
+        {% block head %}
+            <title>Add Task</title>
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block body %}
+            <h1 style="text-align:center;"><u>Add a task</u></h1>
+            <form action="{{ url_for('tasks') }}" method="POST" name="addedtask">
+                <label for="description">Task:</label>
+                <textarea id="description" name="description"></textarea><br>
+
+                <label for="due_date">Due date:</label>
+                <input type="date" id="due_date" name="due_date" rows="2" columns="10"><br>
+
+		<input type="submit" value="Submit"><br>
+            </form>
+        {% endblock %}
+    </body>
+</html>

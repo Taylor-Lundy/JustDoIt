@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css') }}">
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <div>
+            <ul>
+                <!-- apologies for style paramater in a-tag --> 
+                <!-- css wasn't linking text-decoration for some reason -->
+                <li><a style="text-decoration:none; color:white;" href="{{ url_for('index') }}">Home</a></li>
+                <li><a style="text-decoration:none; color:white;" href="{{ url_for('tasks') }}">My List</a></li>
+                <li style="float:right;"><a style="text-decoration:none; color:white;" href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </div>
+        <!-- end of navbar -->
+                            
+        {% block body %}
+        
+        {% endblock %}
+    </body>
+
+</html>

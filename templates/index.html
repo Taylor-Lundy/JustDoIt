@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% extends "parent.html" %}
+
+<html>
+    <head>
+        {% block head %}
+            <title>Home</title>
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block body %}
+            <h1 style="text-align:center;">Welcome to JustDoIt!</h1>
+            <div style="text-align:center;">
+                {% with messages= get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

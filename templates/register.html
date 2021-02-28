@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+{% extends "parent.html" %}
+
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+
+    <body>
+    {% block body %}
+        <div>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="container">
+                    <div>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p>{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter a Username" name="username" required>
+
+                    <label for="pword"><b>Password</b></label>
+                    <input type="password" placeholder="Enter a Password" name="pword" required>
+
+                    <label for="pword2"><b>Confirm Password</b></label>
+                    <input type="password" placeholder="Confirm Password" name="pword2" required>
+
+                    <label for="name"><b>Name (Optional)</b></label>
+                    <input type="text" placeholder="Enter Your Name" name="name">
+
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    {% endblock %}
+    </body>
+</html>
